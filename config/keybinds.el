@@ -2,9 +2,9 @@
 
 (general-define-key
   ;; replace default keybindings
- "C-s"     'helm-swoop  ; search for string in current buffer
- "M-x"     'helm-M-x  ; replace default M-x with ivy backend
- "C-x C-f" 'helm-find-files  ; use helm for finding files
+ "C-s"     'swiper  ; search for string in current buffer
+ "M-x"     'counsel-M-x  ; replace default M-x with ivy backend
+ "C-x C-f" 'counsel-find-file  ; use helm for finding files
   )
 
 (general-define-key
@@ -16,7 +16,7 @@
   "'"   '(iterm-focus :which-key "iterm")
   "?"   '(iterm-goto-filedir-or-home :which-key "iterm - goto dir")
   "SPC" '(avy-goto-word-or-subword-1  :which-key "go to char")
-  ":"   'helm-M-x
+  ":"   'counsel-M-x
 
   "1"  'select-window-1
   "2"  'select-window-2
@@ -30,7 +30,7 @@
 
   ;; Buffers
   "b"   '(:ignore t :which-key "Buffer")
-  "bb"	'helm-buffers-list  ; change buffer using helm
+  "bb"	'ivy-switch-buffer  ; change buffer using helm
   "be"	'eval-buffer
   "bk"  'kill-this-buffer  ; kill current buffer
   "br"	'revert-buffer
@@ -41,8 +41,13 @@
 
   ;; Files
   "f"   '(:ignore t :which-key "File")
-  "ff"  'helm-find-files  ; find file using helm
-  "fr"	'helm-recentf  ; find recently edited files
+  "ff"  'counsel-find-file  ; find file using helm
+  "fr"	'counsel-recentf  ; find recently edited files
+
+
+  ;; Help
+  "h"   '(:ignore t :which-key "Help")
+  "hk"  'counsel-descbinds
 
   ;; Projects
   "p"   '(:ignore t :which-key "Project")
@@ -56,7 +61,7 @@
 
   ;; Search
   "s"   '(:ignore t :which-key "Search")
-  "ss"  'helm-swoop  ; search for string in current buffer
+  "ss"  'swiper  ; search for string in current buffer
   "sp"  'helm-multi-swoop-projectile  ; search in all open project buffers
 
   ;; Toggles
@@ -87,6 +92,7 @@
   ;; Text
   "x"   '(:ignore t :which-key "Text")
   "xs"  'sort-lines  ; sort selection
+  "xy"  'counsel-yank-pop  ; sort selection
   "xd"  '(:ignore t :which-key "Delete")
   "xdw" 'delete-trailing-whitespace
   )
