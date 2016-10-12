@@ -29,6 +29,14 @@
 (setq default-fill-column 80)		; toggle wrapping text at the 80th character
 (setq initial-scratch-message "Welcome to Emacs") ; print a default message in the empty scratch buffer opened at startup
 (setq-default show-trailing-whitespace t)
+;; (setq split-height-threshold nil)
+(setq split-width-threshold 120)
+(setq tramp-default-method "ssh")
+(setq-default fringes-outside-margins t)
+
+;; Indentation
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
 
 ;; LaTeX
 (setq TeX-auto-save t)
@@ -46,5 +54,10 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; Add PDDL-mode if availible
 (with-library PDDL-mode
-  (add-to-list 'auto-mode-alist '("\\.pddl" . PDDL-mode)))
+  (add-to-list 'auto-mode-alist '("\\.pddl" . PDDL-mode))
+  (add-hook 'PDDL-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+  )
+
+(add-hook 'tex-mode-hook 'auto-fill-mode t)

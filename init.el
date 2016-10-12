@@ -30,6 +30,8 @@
 (load-library "theming.el")
 (load-library "modeline.el")
 
+(require 'server)
+(unless (server-running-p) (server-start))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -38,7 +40,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil-magit magit rainbow-delimiters smartparens evil-multiedit all-the-icons ess auto-complete helm-config window-numbering window-number rainbow-mode markdown-mode markdowm-mode f dash avy helm-swoop helm-projectile helm counsel-projectile projectile powerline evil which-key swiper general use-package))))
+    (rust-mode ace-window doom-themes doom-theme eldoc-eval golden-ratio powerline-evil evil-powerline fill-column-indicator git-gutter evil-magit magit rainbow-delimiters smartparens evil-multiedit all-the-icons ess auto-complete helm-config window-numbering window-number rainbow-mode markdown-mode markdowm-mode f dash avy helm-swoop helm-projectile helm counsel-projectile projectile powerline evil which-key swiper general use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

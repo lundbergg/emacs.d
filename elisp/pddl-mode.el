@@ -68,7 +68,7 @@
 (defvar PDDL-mode-map
   (let ((PDDL-mode-map (make-sparse-keymap)))
     (define-key PDDL-mode-map [return] 'newline-and-indent)
-    (define-key PDDL-mode-map [tab] 'pcomplete)
+    ;; (define-key PDDL-mode-map [tab] 'pcomplete)
     (define-key PDDL-mode-map '[(control t) (a)] 'PDDL-mode-tempate-insert-action)
     (define-key PDDL-mode-map '[(control t) (p)] 'PDDL-mode-tempate-insert-problem)
     (define-key PDDL-mode-map '[(control t) (d)] 'PDDL-mode-tempate-insert-domain)

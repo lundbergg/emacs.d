@@ -1,11 +1,11 @@
 (require 'general)
 
 (general-define-key
-  ;; replace default keybindings
+ ;; replace default keybindings
  "C-s"     'swiper  ; search for string in current buffer
  "M-x"     'counsel-M-x  ; replace default M-x with ivy backend
- "C-x C-f" 'counsel-find-file  ; use helm for finding files
-  )
+ "C-x C-f" 'counsel-find-file  ; use counsel for finding files
+ )
 
 (general-define-key
   :states '(normal visual insert emacs)
@@ -44,6 +44,19 @@
   "ff"  'counsel-find-file  ; find file using helm
   "fr"	'counsel-recentf  ; find recently edited files
 
+  ;; Magit
+  "g"   '(:ignore t :which-key "Git")
+  "gb"  'magit-blame-popup
+  "gc"  'magit-commit-popup
+  "gC"  'magit-checkout
+  "gd"  'magit-diff-popup
+  "gf"  'magit-fetch-popup
+  "gl"  'magit-log-popup
+  "gF"  'magit-pull-popup
+  "gP"  'magit-push-popup
+  "gs"  'magit-status
+  "gS"  'magit-stage-file
+  "gU"  'magit-unstage-fil
 
   ;; Help
   "h"   '(:ignore t :which-key "Help")
@@ -66,11 +79,13 @@
 
   ;; Toggles
   "t"   '(:ignore t :which-key "Toggle")
-  ;; "tf"  'fill-column-mode
+  "tf"  'fci-mode
+  "tg"  'golden-ratio-mode
   ;; "thh" '
   "tn"  'linum-mode
   "tF"  'auto-fill-mode
   "tK"  'which-key-mode
+  "tt"  'toggle-truncate-lines
   "tw"  'whitespace-mode
   "tW"  'global-whitespace-mode
   "tT"  '(:ignore t :which-key "User Interface")
@@ -87,8 +102,7 @@
   "wc"  'delete-window
   "wC"  'delete-other-windows
   "wb"  'balance-windows
-  "ww"  'evil-window-next
-
+  "ww"  'other-window
   ;; Text
   "x"   '(:ignore t :which-key "Text")
   "xs"  'sort-lines  ; sort selection
@@ -96,11 +110,3 @@
   "xd"  '(:ignore t :which-key "Delete")
   "xdw" 'delete-trailing-whitespace
   )
-
-(general-define-key
-:state '(insert)
-  "C-SPC"   'set-mark-command nil
-  "C-e"     '(move-end-of-line 'nil)
-  "C-a"     '(back-to-indentation)
-  "C-y"     'yank
-)
