@@ -11,6 +11,7 @@
 auto-save-list
 tramp
 .\#*
+abbrev_defs
 
 # Org-mode
 .org-id-locations
