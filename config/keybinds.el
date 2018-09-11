@@ -34,14 +34,22 @@
   "be"	'eval-buffer
   "bk"  'kill-this-buffer  ; kill current buffer
   "br"	'revert-buffer
+  "bu"  'undo-tree-visualize
 
   ;; Comment/Compile
   "c"   '(:ignore t :which-key "Comment/Compile")
   "cl"  'comment-line
 
+  ;; Errors
+  "e"   '(:ignore t :which-key "Error")
+  "ec"  'flycheck-clear-errors
+  "en"  'flycheck-next-error
+  "ep"  'flycheck-previous-error
+
   ;; Files
   "f"   '(:ignore t :which-key "File")
   "ff"  'counsel-find-file  ; find file using helm
+  "fl"  'counsel-locate ; find file using mlocate
   "fr"	'counsel-recentf  ; find recently edited files
 
   ;; Magit
@@ -61,30 +69,38 @@
   ;; Help
   "h"   '(:ignore t :which-key "Help")
   "hk"  'counsel-descbinds
+  "ho"  'counsel-ace-link
 
   ;; Projects
   "p"   '(:ignore t :which-key "Project")
-  "pp"  'helm-projectile-switch-project  ; switch to projects
-  "pf"  'helm-projectile-find-file  ; find file in project
-  "pb"  'helm-projectile-switch-to-buffer  ; switch buffer in project
+  "pb"  'counsel-projectile-switch-to-buffer  ; switch buffer in project
+  "pd"  'counsel-projectile-find-dir
+  "pf"  'counsel-projectile-find-file  ; find file in project
+  "pp"  'counsel-projectile-switch-project  ; switch to projects
+  "ps"  '(:ignore t :which-key "Search")
+  "psg" 'counsel-projectile-grep
+  "pss" 'counsel-projectile-ag
+  "psr" 'counsel-projectile-rg
 
   ;; Quit
   "q"   '(:ignore t :which-key "Emacs")
-  "qq"  'save-buffers-kill-terminal
+  "qq"  'save-buffers-kill-terminal ; exit emacs
 
   ;; Search
   "s"   '(:ignore t :which-key "Search")
   "ss"  'swiper  ; search for string in current buffer
   "sp"  'helm-multi-swoop-projectile  ; search in all open project buffers
+  "si"  'counsel-semantic-or-imenu ; search with tags or imenu if no tags exist
 
   ;; Toggles
   "t"   '(:ignore t :which-key "Toggle")
   "tf"  'fci-mode
-  "tg"  'golden-ratio-mode
-  ;; "thh" '
-  "tn"  'linum-mode
   "tF"  'auto-fill-mode
+  "tg"  'golden-ratio-mode
   "tK"  'which-key-mode
+  "tl"  'linum-mode
+  "tn"  'neotree-toggle
+  "ts"  'flycheck-mode
   "tt"  'toggle-truncate-lines
   "tw"  'whitespace-mode
   "tW"  'global-whitespace-mode
@@ -103,10 +119,16 @@
   "wC"  'delete-other-windows
   "wb"  'balance-windows
   "ww"  'other-window
+
   ;; Text
   "x"   '(:ignore t :which-key "Text")
+  "xc"  'mc/edit-lines
   "xs"  'sort-lines  ; sort selection
-  "xy"  'counsel-yank-pop  ; sort selection
+  "xy"  'counsel-yank-pop
   "xd"  '(:ignore t :which-key "Delete")
   "xdw" 'delete-trailing-whitespace
+  "xr"  '(:ignore t :which-key "Replace")
+  "xrr" 'helm-regexp
+  "xrs" 'replace-string
+  "xrq" 'query-replace
   )

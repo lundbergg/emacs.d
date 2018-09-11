@@ -13,9 +13,13 @@
   :init
   (global-company-mode t))
 (use-package counsel)
+(use-package counsel-projectile)
 (use-package dash)
-(use-package doom-themes)
-(use-package ess)
+(use-package doom-themes
+  :config
+  (doom-themes-org-config)
+  (doom-themes-neotree-config))
+;; (use-package ess)
 (use-package evil
   :init
   (setq evil-want-C-d-scroll t)
@@ -24,6 +28,9 @@
 (use-package evil-multiedit)
 (use-package f)
 (use-package fill-column-indicator)
+(use-package flycheck
+  :config
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 (use-package general)
 (use-package git-gutter-fringe
   :init
@@ -48,6 +55,11 @@
 (use-package ivy)
 (use-package markdown-mode)
 (use-package magit)
+(use-package multiple-cursors)
+(use-package neotree
+  :init
+  (setq neo-window-width 25)
+  (setq neo-smart-open t))
 (use-package evil-magit)
 (use-package powerline)
 (use-package powerline-evil)
@@ -58,13 +70,30 @@
 (use-package rainbow-mode)
 (use-package rust-mode)
 (use-package s)
+(use-package solaire-mode
+  :config
+  (add-hook 'change-major-mode-hook #'turn-on-solaire-mode)
+  (add-hook 'ediff-prepare-buffer-hook #'solaire-mode)
+  (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer))
 (use-package swiper)
 (use-package smartparens
   :init
   (require 'smartparens-config)
   (add-hook 'prog-mode-hook 'smartparens-global-mode)
   (add-hook 'prog-mode-hook 'show-smartparens-global-mode))
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode))
 (use-package which-key)
 (use-package window-numbering
   :init
   (window-numbering-mode t))
+
+;; Python
+(use-package elpy
+  :config
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (elpy-enable))
+(use-package py-autopep8
+  :config
+  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
