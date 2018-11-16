@@ -2,8 +2,9 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/config/themes/")
 
 (require 'doom-themes)
-(load-theme 'doom-dracula t)
 (require 'solaire-mode)
+
+(load-theme 'doom-one t)
 (solaire-mode-swap-bg)
 
 (add-to-list 'default-frame-alist '(font . "Office Code Pro-10" ))

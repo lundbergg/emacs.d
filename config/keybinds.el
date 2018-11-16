@@ -2,15 +2,45 @@
 
 (general-define-key
  ;; replace default keybindings
+
+ "C-<tab>" 'ivy-yasnippet
+ "C-x b"   'ivy-switch-buffer
+
+ ;; Ivy/Counsel
  "C-s"     'swiper  ; search for string in current buffer
  "M-x"     'counsel-M-x  ; replace default M-x with ivy backend
  "C-x C-f" 'counsel-find-file  ; use counsel for finding files
+ "<f1> f"  'counsel-describe-function
+ "<f1> v"  'counsel-describe-variable
+ "<f1> l"  'counsel-find-library
+ "<f2> i"  'counsel-info-lookup-symbol
+ "<f2> u"  'counsel-unicode-char
+
+ "C-c g"   'counsel-git
+ "C-c j"   'counsel-git-grep
+ "C-c k"   'counsel-git-ag
+ "C-x l"   'counsel-locate
+ "C-S-o"   'counsel-rhythmbox
+
+ "C-c C-r" 'ivy-resume
+
+ ;; Ace-jump
+ "C-c SPC" 'ace-jump-mode
+ "C-x SPC" 'ace-jump-mode-pop-mark
+ "M-o"     'ace-window
+
+ ;; Scroll
+ "C-v"     'zz-scroll-half-page-down
+ "M-v"     'zz-scroll-half-page-up
+
+ ;; Kill
+ [remap kill-ring-save] 'easy-kill
+ [remap mark-sexp]      'easy-mark
  )
 
 (general-define-key
-  :states '(normal visual insert emacs)
-  :prefix "SPC"
-  :non-normal-prefix "M-m"
+  :prefix "<f5>"
+  "" nil ; Unbind prefix key
 
   ;; simple command
   "'"   '(iterm-focus :which-key "iterm")
@@ -51,20 +81,6 @@
   "ff"  'counsel-find-file  ; find file using helm
   "fl"  'counsel-locate ; find file using mlocate
   "fr"	'counsel-recentf  ; find recently edited files
-
-  ;; Magit
-  "g"   '(:ignore t :which-key "Git")
-  "gb"  'magit-blame-popup
-  "gc"  'magit-commit-popup
-  "gC"  'magit-checkout
-  "gd"  'magit-diff-popup
-  "gf"  'magit-fetch-popup
-  "gl"  'magit-log-popup
-  "gF"  'magit-pull-popup
-  "gP"  'magit-push-popup
-  "gs"  'magit-status
-  "gS"  'magit-stage-file
-  "gU"  'magit-unstage-fil
 
   ;; Help
   "h"   '(:ignore t :which-key "Help")
@@ -131,4 +147,24 @@
   "xrr" 'helm-regexp
   "xrs" 'replace-string
   "xrq" 'query-replace
+  )
+
+(general-define-key
+ :prefix "<f6>"
+ "" nil ; Unbind prefix key
+
+ ;; Magit
+ "b"  'magit-blame-popup
+ "c"  'magit-commit-popup
+ "C"  'magit-checkout
+ "d"  'magit-diff-popup
+ "f"  'magit-fetch-popup
+ "i"  'magit-init
+ "I"  'magit-gitignore
+ "l"  'magit-log-popup
+ "F"  'magit-pull-popup
+ "P"  'magit-push-popup
+ "s"  'magit-status
+ "S"  'magit-stage-file
+ "U"  'magit-unstage-fil
   )

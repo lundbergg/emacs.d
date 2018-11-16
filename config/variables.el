@@ -20,6 +20,7 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 
+(setq linum-format "%d ")
 (setq vc-follow-symlinks t )		; don't ask for confirmation when opening symlinked file
 (setq inhibit-startup-screen t )	; inhibit useless and old-school startup screen
 (setq ring-bell-function 'ignore )	; silent bell when you make a mistake
@@ -27,12 +28,14 @@
 (setq coding-system-for-write 'utf-8 )
 (setq sentence-end-double-space nil)	; sentence SHOULD end with only a point.
 (setq default-fill-column 80)		; toggle wrapping text at the 80th character
-(setq initial-scratch-message "Welcome to Emacs") ; print a default message in the empty scratch buffer opened at startup
+(setq initial-scratch-message nil) ; print a default message in the empty scratch buffer opened at startup
 (setq-default show-trailing-whitespace t)
-;; (setq split-height-threshold nil)
-(setq split-width-threshold 120)
 (setq tramp-default-method "ssh")
 (setq-default fringes-outside-margins t)
+
+;; Window Split
+(setq split-height-threshold nil)
+(setq split-width-threshold 160)
 
 ;; Indentation
 (setq-default tab-width 4)
@@ -43,7 +46,9 @@
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
 
-(evil-mode)
+(global-display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'linum-on)
+
 (which-key-mode)
 (projectile-global-mode)
 

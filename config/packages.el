@@ -3,7 +3,12 @@
 ;; Always ensure that packages exist in system.
 (setq use-package-always-ensure t)
 
-(use-package ace-window)
+(use-package ace-window
+  :config
+  (setq aw-dispatch-always t))
+(use-package ace-jump-mode
+  :config
+  (ace-jump-mode-enable-mark-sync))
 (use-package all-the-icons)
 (use-package anzu
   :config
@@ -17,15 +22,13 @@
 (use-package dash)
 (use-package doom-themes
   :config
+  (setq doom-themes-enable-bold t)
+  (setq doom-themes-enable-italic t)
+  (doom-themes-visual-bell-config)
   (doom-themes-org-config)
   (doom-themes-neotree-config))
-;; (use-package ess)
-(use-package evil
-  :init
-  (setq evil-want-C-d-scroll t)
-  (setq evil-want-C-u-scroll t))
-(use-package evil-anzu)
-(use-package evil-multiedit)
+(use-package evil) ; Used for modeline
+(use-package easy-kill)
 (use-package f)
 (use-package fill-column-indicator)
 (use-package flycheck
@@ -52,23 +55,29 @@
     (helm-mode)))
 (use-package helm-projectile)
 (use-package helm-swoop)
-(use-package ivy)
+(use-package hlinum
+  :config
+  (hlinum-activate))
+(use-package ivy
+  :config
+  (setq ivy-re-builders-alist ; Set completion style
+        '((t . ivy--regex-ignore-order)))
+  (setq ivy-height 25)
+  (setq ivy-height-alist nil))
 (use-package markdown-mode)
 (use-package magit)
 (use-package multiple-cursors)
 (use-package neotree
   :init
   (setq neo-window-width 25)
-  (setq neo-smart-open t))
-(use-package evil-magit)
+  (setq neo-smart-open t)
+  (neotree))
 (use-package powerline)
-(use-package powerline-evil)
 (use-package projectile)
 (use-package rainbow-delimiters
   :init
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 (use-package rainbow-mode)
-(use-package rust-mode)
 (use-package s)
 (use-package solaire-mode
   :config
@@ -97,3 +106,10 @@
 (use-package py-autopep8
   :config
   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+
+;; Snippets
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
+(use-package yasnippet-snippets)
+(use-package ivy-yasnippet)

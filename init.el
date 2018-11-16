@@ -39,10 +39,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("a94f1a015878c5f00afab321e4fef124b2fc3b823c8ddd89d360d710fc2bddfc" default)))
+ '(global-display-line-numbers-mode nil)
  '(markdown-command "pandoc")
  '(package-selected-packages
    (quote
-    (lua-mode multiple-cursors flycheck jedi py-autopep8 autopep8 elpy neotree rust-mode ace-window doom-themes doom-theme eldoc-eval golden-ratio powerline-evil evil-powerline fill-column-indicator git-gutter evil-magit magit rainbow-delimiters smartparens evil-multiedit all-the-icons ess auto-complete helm-config window-numbering window-number rainbow-mode markdown-mode markdowm-mode f dash avy helm-swoop helm-projectile helm counsel-projectile projectile powerline evil which-key swiper general use-package))))
+    (yasnippets ivy-yasnippet yasnippet-snippets easy-kill hlinum airline-themes evil window-numbering which-key use-package undo-tree unbound solaire-mode smartparens rainbow-mode rainbow-delimiters py-autopep8 powerline neotree multiple-cursors markdown-mode magit helm-swoop helm-projectile golden-ratio git-gutter-fringe general flycheck fill-column-indicator f elpy doom-themes counsel-projectile anzu ace-window ace-jump-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
