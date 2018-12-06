@@ -18,8 +18,21 @@
   :init
   (global-company-mode t))
 (use-package counsel)
-(use-package counsel-projectile)
+(use-package counsel-projectile
+  :config
+  (counsel-projectile-mode))
 (use-package dash)
+(use-package gruvbox-theme
+  :after (linum hlinum git-gutter-fringe ace-window)
+  :config
+  (load-theme 'gruvbox-dark-hard t)
+  (set-face-attribute 'linum nil :background (face-attribute 'default :background))
+  (set-face-attribute 'linum-highlight-face nil :background (face-attribute 'default :background))
+  (set-face-attribute 'aw-leading-char-face nil :height 1.0)
+  (set-face-attribute 'git-gutter-fr:added nil :background (face-attribute 'default :background))
+  (set-face-attribute 'git-gutter-fr:deleted nil :background (face-attribute 'default :background))
+  (set-face-attribute 'git-gutter-fr:modified nil :background (face-attribute 'default :background))
+  (set-face-attribute 'aw-background-face nil :foreground "gray40"))
 (use-package doom-themes
   :config
   (setq doom-themes-enable-bold t)
@@ -29,6 +42,9 @@
   (doom-themes-neotree-config))
 (use-package evil) ; Used for modeline
 (use-package easy-kill)
+(use-package expand-region
+  :config
+  (setq expand-region-smart-cursor t))
 (use-package f)
 (use-package fill-column-indicator)
 (use-package flycheck
@@ -38,7 +54,6 @@
 (use-package git-gutter-fringe
   :init
   (global-git-gutter-mode))
-(use-package golden-ratio)
 (use-package helm
   :init
   (progn ;; Ugly
@@ -58,20 +73,21 @@
 (use-package hlinum
   :config
   (hlinum-activate))
+(use-package hydra)
 (use-package ivy
   :config
   (setq ivy-re-builders-alist ; Set completion style
         '((t . ivy--regex-ignore-order)))
   (setq ivy-height 25)
   (setq ivy-height-alist nil))
+(use-package ivy-hydra)
 (use-package markdown-mode)
 (use-package magit)
 (use-package multiple-cursors)
 (use-package neotree
   :init
   (setq neo-window-width 25)
-  (setq neo-smart-open t)
-  (neotree))
+  (setq neo-smart-open t))
 (use-package powerline)
 (use-package projectile)
 (use-package rainbow-delimiters

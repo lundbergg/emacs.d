@@ -1,10 +1,23 @@
 (require 'general)
+(general-define-key
+ :keymaps 'override
+
+ ;; Ace-jump
+ "C-c SPC" 'ace-jump-mode
+ "C-x SPC" 'ace-jump-mode-pop-mark
+ "M-o"     'ace-window
+ )
+
 
 (general-define-key
  ;; replace default keybindings
 
+ "C-c p"   'projectile-command-map
+ 
  "C-<tab>" 'ivy-yasnippet
  "C-x b"   'ivy-switch-buffer
+
+ "C-."     'er/expand-region
 
  ;; Ivy/Counsel
  "C-s"     'swiper  ; search for string in current buffer
@@ -23,11 +36,6 @@
  "C-S-o"   'counsel-rhythmbox
 
  "C-c C-r" 'ivy-resume
-
- ;; Ace-jump
- "C-c SPC" 'ace-jump-mode
- "C-x SPC" 'ace-jump-mode-pop-mark
- "M-o"     'ace-window
 
  ;; Scroll
  "C-v"     'zz-scroll-half-page-down
@@ -112,7 +120,6 @@
   "t"   '(:ignore t :which-key "Toggle")
   "tf"  'fci-mode
   "tF"  'auto-fill-mode
-  "tg"  'golden-ratio-mode
   "tK"  'which-key-mode
   "tl"  'linum-mode
   "tn"  'neotree-toggle

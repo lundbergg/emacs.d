@@ -17,7 +17,7 @@
       '(kill-ring
         search-ring
         regexp-search-ring))
-(recentf-mode 1)
+(recentf-mode t)
 (setq recentf-max-menu-items 25)
 
 (setq linum-format "%d ")
@@ -32,6 +32,7 @@
 (setq-default show-trailing-whitespace t)
 (setq tramp-default-method "ssh")
 (setq-default fringes-outside-margins t)
+(pending-delete-mode t)
 
 ;; Window Split
 (setq split-height-threshold nil)
@@ -39,23 +40,20 @@
 
 ;; Indentation
 (setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode t)
+(highlight-indentation-mode nil)
 
 ;; LaTeX
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
 
-(global-display-line-numbers-mode)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'prog-mode-hook 'linum-on)
+(add-hook 'tex-mode-hook 'auto-fill-mode t)
 
 (which-key-mode)
 (projectile-global-mode)
-
-;; Disable GUI elements
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -64,5 +62,3 @@
   (add-to-list 'auto-mode-alist '("\\.pddl" . PDDL-mode))
   (add-hook 'PDDL-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
   )
-
-(add-hook 'tex-mode-hook 'auto-fill-mode t)
